@@ -61,10 +61,9 @@ file manager having a graphical user interface.
 But we can do better. Typing numbers is cumbersome. It is easier to keep your
 fingers on the homerow.  With this plugin, type `K` for up or `J` for down to
 activate jump mode.  Ranger then waits for two home-row keypresses representing
-a two-digit number, mapping `asdfghjkl;` to `1234567890`.
-
-So instead of typing `14j`, you can type `Jaf`. For one-digit numbers, just hit
-shift. For example, use `KF` to go up four.
+a two-digit number, mapping `asdfghjkl;` to `1234567890`.  So instead of typing
+`14j`, you can type `Jaf`. For one-digit numbers, just hit shift. For example,
+use `KF` to go up four.
 
 <!----------------------------------------------------------------------------->
 
@@ -76,6 +75,15 @@ directory.
 ```
 ~/.config/ranger/plugins
 ```
+
+A single command should suffice, which you can easily copy and paste.
+
+<!--  Unfortunately, I have to break the 80 column rule. -->
+
+```
+wget -P ~/.config/ranger/plugins/ https://raw.githubusercontent.com/zachary-krepelka/ranger-vertigo/main/plugin_vertigo.py
+```
+
 <!----------------------------------------------------------------------------->
 
 ## Customization
@@ -93,7 +101,7 @@ These will be found at the top of the file.  Dvorak users will want to change
 the `HOMEROW` variable.
 
 ```
-sed -i 's/asdfghjkl;/aoeuidhtns/' plugin_vertigo.py
+sed -i 's/asdfghjkl;/aoeuidhtns/' ~/.config/ranger/plugins/plugin_vertigo.py
 ```
 
 <!-- References and Footnotes ------------------------------------------------->
