@@ -34,8 +34,6 @@ def input():
 
 	input += window.getkey()
 
-	curses.endwin()
-
 	return input
 
 def translate(letters):
@@ -85,6 +83,10 @@ class Vertigo(Command):
 				self.fm.notify('Vertigo Canceled', bad = True)
 
 			return
+
+		finally:
+
+			curses.endwin()
 
 		motion = self.arg(1)
 
