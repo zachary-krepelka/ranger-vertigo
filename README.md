@@ -76,7 +76,8 @@ directory.
 ~/.config/ranger/plugins
 ```
 
-A single command should suffice, which you can easily copy and paste.
+A single command should suffice, which you can easily copy and paste with the
+button to your right.
 
 <!--  Unfortunately, I have to break the 80 column rule. -->
 
