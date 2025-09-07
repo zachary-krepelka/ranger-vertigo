@@ -6,7 +6,7 @@
 	DATE: Saturday, March 9th, 2024
 	ABOUT: A better way to move vertically in ranger
 	ORIGIN: https://github.com/zachary-krepelka/ranger-vertigo.git
-	UPDATED: Sunday, September 7th, 2025 at 6:51 AM
+	UPDATED: Sunday, September 7th, 2025 at 6:58 AM
 -->
 
 `plugin_vertigo.py` is a port of `vertigo.vim` to ranger.
@@ -82,19 +82,20 @@ your fingers on the homerow.  With this plugin, type `K` for up or `J` for down
 to activate jump mode.  Ranger then waits for two home-row keypresses
 representing a two-digit number, mapping `asdfghjkl;` to `1234567890`.  So
 instead of typing `14j`, you can type `Jaf`. For one-digit numbers, just hit
-shift. For example, use `KF` to go up four.
+shift. For example, use `KF` to go up four.  Here is a table that breaks down
+how keys are mapped.
 
 <div align="center">
 
 | | left<br>pinky | left<br>ring | left<br>middle | left<br>index | left<br>index | right<br>index | right<br>index | right<br>middle | right<br>ring | right<br>pinky |
-| -------- | - | - | - | - | - | - | - | - | - | - |
-| Physical | a | s | d | f | g | h | j | k | l | ; |
-| Virtual  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 |
+| :------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Physical |  a  |  s  |  d  |  f  |  g  |  h  |  j  |  k  |  l  |  ;  |
+| Virtual  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |
 
 </div>
 
-This can be overwhelming at first, but once you get use to it, it will become
-second nature. Here is a flowchart to help you digest the process.
+All of this can be overwhelming at first, but once you get use to it, it will
+become second nature. Here is a flowchart to help you digest the process.
 
 ```mermaid
 flowchart TD
@@ -119,10 +120,10 @@ flowchart TD
     up   --> specify-magnitude-up{How far?}
     down --> specify-magnitude-down{How far?}
 
-    specify-magnitude-up   -->|Within Nine| close-up[One Uppercase<Br>Homerow Letter]
-    specify-magnitude-up   -->|Ten or More| far-up[Two Lowercase<Br>Homerow Letters]
-    specify-magnitude-down -->|Within Nine| close-down[One Uppercase<Br>Homerow Letter]
-    specify-magnitude-down -->|Ten or More| far-down[Two Lowercase<Br>Homerow Letters]
+    specify-magnitude-up   -->|Within Nine Lines| close-up[One Uppercase<Br>Homerow Letter]
+    specify-magnitude-up   -->|Ten or More Lines| far-up[Two Lowercase<Br>Homerow Letters]
+    specify-magnitude-down -->|Within Nine Lines| close-down[One Uppercase<Br>Homerow Letter]
+    specify-magnitude-down -->|Ten or More Lines| far-down[Two Lowercase<Br>Homerow Letters]
 
     close-up   --> motion1([KX])
     far-up     --> motion2([Kxx])
