@@ -86,7 +86,7 @@ shift. For example, use `KF` to go up four.
 
 <div align="center">
 
-| left<br>pinky | left<br>ring | left<br>middle | left<br>index | left<br>index | right<br>index | right<br>index | right<br>middle | right<br>ring | right<br>pinky |
+| | left<br>pinky | left<br>ring | left<br>middle | left<br>index | left<br>index | right<br>index | right<br>index | right<br>middle | right<br>ring | right<br>pinky |
 | -------- | - | - | - | - | - | - | - | - | - | - |
 | Physical | a | s | d | f | g | h | j | k | l | ; |
 | Virtual  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 |
