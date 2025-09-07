@@ -6,7 +6,7 @@
 	DATE: Saturday, March 9th, 2024
 	ABOUT: A better way to move vertically in ranger
 	ORIGIN: https://github.com/zachary-krepelka/ranger-vertigo.git
-	UPDATED: Sunday, September 7th, 2025 at 2:04 AM
+	UPDATED: Sunday, September 7th, 2025 at 6:51 AM
 -->
 
 `plugin_vertigo.py` is a port of `vertigo.vim` to ranger.
@@ -93,6 +93,42 @@ shift. For example, use `KF` to go up four.
 
 </div>
 
+This can be overwhelming at first, but once you get use to it, it will become
+second nature. Here is a flowchart to help you digest the process.
+
+```mermaid
+flowchart TD
+
+    subgraph Direction
+        up
+        down
+    end
+
+    subgraph Magnitude
+        close-up
+        far-up
+        close-down
+        far-down
+    end
+
+    start([Intent to Move Vertically]) --> choose-direction{Up or Down?}
+
+    choose-direction -->|Up| up[Press K]
+    choose-direction -->|Down| down[Press J]
+
+    up   --> specify-magnitude-up{How far?}
+    down --> specify-magnitude-down{How far?}
+
+    specify-magnitude-up   -->|Within Nine| close-up[One Uppercase<Br>Homerow Letter]
+    specify-magnitude-up   -->|Ten or More| far-up[Two Lowercase<Br>Homerow Letters]
+    specify-magnitude-down -->|Within Nine| close-down[One Uppercase<Br>Homerow Letter]
+    specify-magnitude-down -->|Ten or More| far-down[Two Lowercase<Br>Homerow Letters]
+
+    close-up   --> motion1([KX])
+    far-up     --> motion2([Kxx])
+    close-down --> motion3([JX])
+    far-down   --> motion4([Jxx])
+```
 
 <!----------------------------------------------------------------------------->
 
