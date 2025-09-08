@@ -4,7 +4,7 @@
 # ABOUT: A better way to move vertically in ranger
 # ORIGIN: https://github.com/zachary-krepelka/ranger-vertigo.git
 # PORT OF: https://github.com/prendradjaja/vim-vertigo.git
-# UPDATED: Saturday, January 4th, 2025 at 4:47 AM
+# UPDATED: Monday, September 8th, 2025 at 2:18 PM
 
 
 from __future__ import (absolute_import, division, print_function)
@@ -152,35 +152,46 @@ class Vertigo(Command):
             case _: raise ValueError("faulty length")
 
 
+    def __notify(self, message, **kwargs):
+
+        """Notify the user with a command-specific message"""
+
+        if QUIET: return
+
+        prefix = self.__class__.__name__
+
+        self.fm.notify(prefix + ' ' + message, **kwargs)
+
+
     def execute(self):
 
         """Executes the command."""
 
         if self.fm.settings.line_numbers == 'false':
 
-            self.fm.notify(
-                "Please enable line numbering "
-                "to use the vertigo plugin.",
-                bad = True
-            )
+            self.__notify('requires line numbering', bad = True)
 
             return
 
-        try: count = self.__translate(self.__input())
+        try:
+
+            count = self.__translate(self.__input())
 
         except ValueError:
 
-            if QUIET: return
-            self.fm.notify('Vertigo Untranslatable', bad = True)
+            self.__notify('Untranslatable', bad = True)
+
             return
 
         except KeyboardInterrupt:
 
-            if QUIET: return
-            self.fm.notify('Vertigo Canceled', bad = True)
+            self.__notify('Canceled', bad = True)
+
             return
 
-        finally: curses.endwin()
+        finally:
+
+            curses.endwin()
 
         motion = self.arg(1).lower()
 
@@ -198,9 +209,7 @@ class Vertigo(Command):
 
             motion = 'to'; self.fm.move(to=count)
 
-        if QUIET: return
-
-        self.fm.notify('Vertigo ' + motion.capitalize()  + ' ' + str(count))
+        self.__notify(motion.capitalize() + ' ' + str(count))
 
 
 HOOK_INIT_OLD = ranger.api.hook_init
